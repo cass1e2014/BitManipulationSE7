@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,8 +42,8 @@ public class RepeatedDNASequences {
 	 * the total number of bits needed are only 20. 
 	 * Therefore we could encode a string into a integer. 
 	 */
-    private Map<Character, Integer> codingMap = new HashMap<Character, Integer>();
-    private int encode(String s){
+    private static Map<Character, Integer> codingMap = new HashMap<Character, Integer>();
+    private static int encode(String s){
         int value = 0;
         for(int i = 0; i < s.length(); i++){
             value = (value << 2) + codingMap.get(s.charAt(i));
@@ -50,14 +51,14 @@ public class RepeatedDNASequences {
         return value;
     }
     
-    private void fill(){
+    private static void fill(){
         codingMap.put('A', 0);
         codingMap.put('C', 1);
         codingMap.put('G', 2);
         codingMap.put('T', 3);
     }
     
-    public List<String> findRepeatedDnaSequences(String s) {
+    public static List<String> findRepeatedDnaSequences(String s) {
         List<String> result = new ArrayList<String>();
         if(s == null || s.length() < 10){
             return result;
@@ -84,5 +85,9 @@ public class RepeatedDNASequences {
             hi ++;
         }
         return result;
+    }
+    
+    public static void main(String[] args){
+    	System.out.println(Arrays.toString(findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT").toArray()));
     }
 }

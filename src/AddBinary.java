@@ -10,7 +10,7 @@
  * 
  */
 public class AddBinary {
-	public String addBinary(String a, String b) {
+	public static String addBinary(String a, String b) {
 		if(a == null && b == null){
             return null;
         }
@@ -54,5 +54,11 @@ public class AddBinary {
          }
          
          return rst;
+	}
+	
+	public static void main(String[] args){
+		String a ="11";
+		String b = "1";
+		System.out.println(addBinary(a, b));
 	}
 }
